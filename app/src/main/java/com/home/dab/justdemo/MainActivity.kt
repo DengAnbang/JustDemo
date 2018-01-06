@@ -7,12 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.dab.just.JustConfig
 import com.dab.just.base.BottomTabActivity
-import com.dab.just.utlis.ToastUtils.showToast
 
 
 class MainActivity : BottomTabActivity() {
     override fun fragments(): Array<Fragment> = arrayOf(
-            TestFragment()
+            MainFragment()
             , TestFragment()
             , TestFragment()
     )

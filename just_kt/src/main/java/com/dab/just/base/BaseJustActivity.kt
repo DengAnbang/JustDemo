@@ -10,7 +10,7 @@ import android.view.Window
 import android.widget.LinearLayout
 import com.dab.just.R
 import com.dab.just.custom.TitleBar
-
+import com.dab.just.utlis.ToastUtils
 import com.dab.just.utlis.extend.visibility
 import org.jetbrains.anko.find
 
@@ -21,7 +21,7 @@ abstract class BaseJustActivity : AppCompatActivity() {
     @LayoutRes
     abstract fun setContentViewRes(): Int
 
-    open val fullScreen = false
+    open var fullScreen = false
     private val rootLayout by lazy {
         find<LinearLayout>(R.id.root_layout)
     }
@@ -31,10 +31,9 @@ abstract class BaseJustActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        beforeSetContentView()
         setContentView(R.layout.activity_layout_base)
-        if (setContentViewRes() < 0) return
+        if (setContentViewRes() <= 0) return
         layoutInflater.inflate(setContentViewRes(), rootLayout, true)
         val statusBar = find<View>(R.id.view_status_bar)
         initStatusBar(statusBar)
@@ -42,10 +41,20 @@ abstract class BaseJustActivity : AppCompatActivity() {
         initView()
         initEvent()
         initData()
+        visibility(titleBar, !fullScreen)
+    }
 
+    open fun showToast(msg: String?) {
+        ToastUtils.showToast(this, msg)
+    }
+
+    open fun beforeSetContentView() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
     open fun setStatusBar(statusBar: View) {}
+
     open fun initEvent() {}
     open fun initData() {}
     open fun initView() {}
