@@ -1,8 +1,11 @@
 package com.dab.just;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
+
+import com.dab.just.utlis.StackManager;
 
 import java.io.File;
 
@@ -38,7 +41,8 @@ public class JustConfig {
         return mApplicationContext;
     }
 
-    public static void init(Context context) {
+    public static void init(Application context) {
         mApplicationContext = context.getApplicationContext();
+        StackManager.initStackManager(context);
     }
 }
