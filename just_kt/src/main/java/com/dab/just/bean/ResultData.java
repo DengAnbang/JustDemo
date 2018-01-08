@@ -32,4 +32,13 @@ public class ResultData<T> {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "ResultData{" +
+                "code=" + code +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }

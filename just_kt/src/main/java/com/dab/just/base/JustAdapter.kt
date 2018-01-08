@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dab.just.R
-import com.dab.just.net.http.HttpManager
+import com.dab.just.net.http.JustHttpManager
 import com.dab.just.utlis.extend.click
 
 import java.util.*
@@ -92,7 +92,7 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
     fun setLoadData(datas: List<T>?, more: Boolean = true) {
         if (datas != null) {
             hideFootView = if (more) {
-                datas.size < HttpManager.PAGE_SIZE
+                datas.size < JustHttpManager.PAGE_SIZE
             } else {
                 true
             }
@@ -108,7 +108,7 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
     fun setNewData(datas: List<T>?, canMore: Boolean = true) {
         if (datas != null) {
             hideFootView = if (canMore) {
-                datas.size < HttpManager.PAGE_SIZE
+                datas.size < JustHttpManager.PAGE_SIZE
             } else {
                 true
             }

@@ -45,4 +45,5 @@ public class JustConfig {
         mApplicationContext = application.getApplicationContext();
         StackManager.initStackManager(application);
     }
+
 }

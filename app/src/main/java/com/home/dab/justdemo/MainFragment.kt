@@ -8,8 +8,9 @@ import com.dab.just.base.ImageViewJust
 import com.dab.just.base.LazyFragment
 import com.dab.just.utlis.extend.click
 import com.dab.just.utlis.extend.loge
+import com.dab.just.utlis.extend.requestSucceed
+import com.home.dab.justdemo.net.HttpManager
 import org.jetbrains.anko.support.v4.find
-import org.jetbrains.anko.support.v4.startActivityForResult
 
 /**
  * Created by dab on 2018/1/6 0006 12:51
@@ -21,7 +22,11 @@ class MainFragment : LazyFragment() {
     override fun onFirstVisibleToUser(view: View?) {
         view?.apply {
             click(R.id.btn_photo) {
-                startActivityForResult<SelectPhotoDialogActivity>(55)
+                HttpManager.paswLogin("123456", "wwww")
+                        .requestSucceed(this@MainFragment) {
+                            loge(it)
+                        }
+//                startActivityForResult<SelectPhotoDialogActivity>(55)
             }
         }
     }
