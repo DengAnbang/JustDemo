@@ -5,7 +5,6 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.dab.just.JustConfig
 import com.dab.just.base.BottomTabActivity
 
 
@@ -35,7 +34,6 @@ class MainActivity : BottomTabActivity() {
 
     override fun initView() {
         super.initView()
-        JustConfig.init(this)
         title = "asdada"
     }
 

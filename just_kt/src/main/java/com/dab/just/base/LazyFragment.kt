@@ -116,9 +116,9 @@ abstract class LazyFragment : Fragment(), RequestHelper {
     }
 
     override fun showLoadDialog(msg: String, canCancel: Boolean) {
-        if (mProgressDialog == null)
-            mProgressDialog = ProgressDialog(context, R.style.Theme_ProgressDialog)
         if (!isVisibleToMe) return
+        if (mProgressDialog == null)
+            mProgressDialog = ProgressDialog(context!!, R.style.Theme_ProgressDialog)
         mProgressDialog!!.setCanceledOnTouchOutside(false)
         mProgressDialog!!.setMessage(msg)
         if (!mProgressDialog!!.isShowing) {

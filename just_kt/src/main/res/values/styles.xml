@@ -44,4 +44,15 @@
     <style name="Dialog" parent="BaseDialog">
         <item name="android:windowAnimationStyle">@style/Base.Animation.Dialog.Style</item>
     </style>
+    <!--图片加载控件的自定义属性-->
+    <declare-styleable name="ImageViewJust">
+        <attr name="src" format="reference|integer"/>
+        <attr name="placeholder" format="reference|integer"/>
+        <attr name="error" format="reference|integer"/>
+        <attr name="defaultRoundingRadius" format="integer"/>
+        <attr name="angle_left" format="integer"/>
+        <attr name="angle_top" format="integer"/>
+        <attr name="angle_right" format="integer"/>
+        <attr name="angle_bottom" format="integer"/>
+    </declare-styleable>
 </resources>

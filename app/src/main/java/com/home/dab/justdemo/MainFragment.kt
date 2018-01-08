@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.dab.just.activity.SelectPhotoDialogActivity
+import com.dab.just.base.ImageViewJust
 import com.dab.just.base.LazyFragment
 import com.dab.just.utlis.extend.click
 import com.dab.just.utlis.extend.loge
+import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.support.v4.startActivityForResult
 
 /**
@@ -30,6 +32,10 @@ class MainFragment : LazyFragment() {
             if (requestCode == 55 && data != null) {
                 val path = data.getStringExtra(SelectPhotoDialogActivity.PATH)
                 loge(path)
+                find<ImageViewJust>(R.id.iv_test)
+                        .setImageRound(360)
+//                        .setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
+                        .setImage(path)
             }
         }
     }
