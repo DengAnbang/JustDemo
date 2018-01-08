@@ -35,6 +35,9 @@ class MainActivity : BottomTabActivity() {
     override fun initView() {
         super.initView()
         title = "asdada"
+//        setRightText("哈哈哈") {
+//            toast("asdad")
+//        }
     }
 
     /**

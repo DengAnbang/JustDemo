@@ -11,7 +11,6 @@ import com.dab.just.JustConfig;
 
 public class JustApplication extends Application {
 
-
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);

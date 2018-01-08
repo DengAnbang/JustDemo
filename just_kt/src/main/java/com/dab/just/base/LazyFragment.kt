@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable
 
 /**
  * Created by dab on 2017/8/19 0019 15:41
- * 懒加载
+ * 懒加载Fragment,并且实现请求接口RequestHelper
  */
 
 abstract class LazyFragment : Fragment(), RequestHelper {

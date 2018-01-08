@@ -13,6 +13,7 @@ import com.dab.just.R
 
 /**
  * Created by dab on 2017/8/7 0007 15:21
+ * 底部按钮的父类
  */
 
 abstract class BottomTabActivity : BaseJustActivity() {

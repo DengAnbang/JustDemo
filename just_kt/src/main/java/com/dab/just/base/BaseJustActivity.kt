@@ -8,14 +8,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.Window
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.dab.just.R
-import com.dab.just.custom.TitleBar
 import com.dab.just.utlis.ToastUtils
+import com.dab.just.utlis.extend.click
+import com.dab.just.utlis.extend.setText
 import com.dab.just.utlis.extend.visibility
 import org.jetbrains.anko.find
 
 /**
  * Created by dab on 2017/12/30 0030 15:12
+ * 基础的Activity,拥有titleBar
  */
 abstract class BaseJustActivity : AppCompatActivity() {
     @LayoutRes
@@ -24,9 +27,6 @@ abstract class BaseJustActivity : AppCompatActivity() {
     open var fullScreen = false
     private val rootLayout by lazy {
         find<LinearLayout>(R.id.root_layout)
-    }
-    val titleBar by lazy {
-        find<TitleBar>(R.id.titleBar)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ abstract class BaseJustActivity : AppCompatActivity() {
         initView()
         initEvent()
         initData()
-        visibility(titleBar, !fullScreen)
+        visibility(find<View>(R.id.layout_title_bar), !fullScreen)
     }
 
     open fun showToast(msg: String?) {
@@ -50,6 +50,7 @@ abstract class BaseJustActivity : AppCompatActivity() {
 
     open fun beforeSetContentView() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or  View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
@@ -57,7 +58,28 @@ abstract class BaseJustActivity : AppCompatActivity() {
 
     open fun initEvent() {}
     open fun initData() {}
-    open fun initView() {}
+    open fun initView() {
+        click(R.id.tv_base_back) { onBackPressed()}
+    }
+
+    /**
+     * 设置title
+     */
+    override fun setTitle(title: CharSequence?) {
+        setText(R.id.tv_base_title,title)
+    }
+
+    /**
+     * 设置右边的按钮
+     */
+    fun setRightText(msg: CharSequence?,onClick:(View)->Unit):TextView{
+        R.id.tv_base_btn.let {
+            click(it,onClick)
+            visibility(it,true)
+            setText(it,msg)
+        }
+        return find(R.id.tv_base_btn)
+    }
     private fun initStatusBar(view: View) {
         var statusBarHeight = 0
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -74,7 +96,5 @@ abstract class BaseJustActivity : AppCompatActivity() {
         visibility(view, !fullScreen)
     }
 
-    override fun setTitle(title: CharSequence?) {
-        titleBar.titleView.setText(title)
-    }
+
 }
