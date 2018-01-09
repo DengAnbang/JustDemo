@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.dab.just.activity.SelectPhotoDialogActivity
-import com.dab.just.base.ImageViewJust
 import com.dab.just.base.LazyFragment
+import com.dab.just.custom.PinchImageView
 import com.dab.just.utlis.extend.click
 import com.dab.just.utlis.extend.loge
 import com.dab.just.utlis.extend.requestSucceed
@@ -28,6 +28,7 @@ class MainFragment : LazyFragment() {
                         }
 //                startActivityForResult<SelectPhotoDialogActivity>(55)
             }
+            find<PinchImageView>(R.id.ziv_test).setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
         }
     }
 
@@ -37,10 +38,11 @@ class MainFragment : LazyFragment() {
             if (requestCode == 55 && data != null) {
                 val path = data.getStringExtra(SelectPhotoDialogActivity.PATH)
                 loge(path)
-                find<ImageViewJust>(R.id.iv_test)
-                        .setImageRound(360)
-//                        .setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
-                        .setImage(path)
+
+//                find<ImageViewJust>(R.id.iv_test)
+//                        .setImageRound(360)
+////                        .setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
+//                        .setImage(path)
             }
         }
     }
