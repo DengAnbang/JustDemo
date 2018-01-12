@@ -34,7 +34,11 @@ abstract class LazyFragment : Fragment(), RequestHelper {
     }
 
     open fun onVisibleOrInvisibleToUser(visible: Boolean) {}
+    @LayoutRes
+    protected abstract fun viewLayoutID(): Int
+
     protected abstract fun onFirstVisibleToUser(view: View?)
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Activity) {
@@ -60,8 +64,7 @@ abstract class LazyFragment : Fragment(), RequestHelper {
         isVisibleToMe = false
     }
 
-    @LayoutRes
-    protected abstract fun viewLayoutID(): Int
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return if (viewLayoutID() != 0) {
@@ -112,7 +115,7 @@ abstract class LazyFragment : Fragment(), RequestHelper {
     }
 
     override fun showToast(msg: String?) {
-        ToastUtils.showToast(msg)
+        ToastUtils.showToast(activity,msg)
     }
 
     override fun showLoadDialog(msg: String, canCancel: Boolean) {

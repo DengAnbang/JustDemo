@@ -91,7 +91,7 @@ abstract class BottomTabActivity : BaseJustActivity() {
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {onTabReselected(tab.position)}
         })
 
         var showTab = showTab()
@@ -113,6 +113,7 @@ abstract class BottomTabActivity : BaseJustActivity() {
                 .forEach { supportFragmentManager.beginTransaction().add(R.id.home_container, it).commit() }
     }
 
+
     private fun onTabItemSelected(position: Int) {
         if (mFragmensts.size < position) return
         for (i in mFragmensts.indices) {
@@ -122,7 +123,11 @@ abstract class BottomTabActivity : BaseJustActivity() {
             } else {
                 supportFragmentManager.beginTransaction().hide(fragment).commit()
             }
-
         }
     }
+
+    /**
+     * 当重复点击tab的时候调用
+     */
+    open fun onTabReselected(position: Int) {}
 }

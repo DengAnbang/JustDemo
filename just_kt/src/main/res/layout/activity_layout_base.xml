@@ -6,31 +6,35 @@
               android:orientation="vertical">
 
     <View
-        android:background="@color/just_color_333333"
+        android:background="@color/app_status_bar_color"
         android:id="@+id/view_status_bar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="0dp"
         />
     <RelativeLayout
+        android:background="@color/app_status_bar_color"
         android:id="@+id/layout_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="45dp"
         android:orientation="horizontal">
-        <TextView
+        <ImageView
             android:layout_marginLeft="13dp"
-            android:id="@+id/tv_base_back"
+            android:id="@+id/iv_base_back"
             android:layout_centerVertical="true"
             android:padding="10dp"
-            android:background="@mipmap/back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"/>
+            android:src="@mipmap/b2_nav_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <TextView
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:textColor="@color/just_color_333333"
             android:id="@+id/tv_base_title"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textColor="@color/just_color_333333"
+            android:textSize="17sp"
             android:visibility="gone"
             android:padding="13dp"
             android:layout_centerVertical="true"
@@ -39,5 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
+    <View
+        android:id="@+id/view_base_line"
+        style="@style/Line"/>
 
 </LinearLayout>

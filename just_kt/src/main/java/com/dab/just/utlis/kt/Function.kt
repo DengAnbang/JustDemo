@@ -1,4 +1,4 @@
-package com.dab.just.utlis.extend
+package com.dab.just.utlis.kt
 
 import android.annotation.SuppressLint
 import android.app.Activity

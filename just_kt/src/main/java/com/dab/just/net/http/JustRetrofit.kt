@@ -1,6 +1,6 @@
 package com.dab.just.net.http
 
-import com.dab.just.utlis.extend.loge
+import com.dab.just.utlis.kt.loge
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

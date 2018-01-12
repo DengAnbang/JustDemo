@@ -41,8 +41,12 @@ public class JustConfig {
         return mApplicationContext;
     }
 
+    public static boolean isApplicationContextNull() {
+        return mApplicationContext == null;
+    }
+
     public static void init(Application application) {
-        mApplicationContext = application.getApplicationContext();
+        mApplicationContext = application;
         StackManager.initStackManager(application);
     }
 

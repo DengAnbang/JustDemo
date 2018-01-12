@@ -1,4 +1,4 @@
-package com.dab.just.utlis.extend
+package com.dab.just.utlis.kt
 
 import android.Manifest
 import android.app.Activity

@@ -14,13 +14,13 @@ import org.jetbrains.anko.wrapContent
 abstract open class BaseDialogActivity : BaseJustActivity() {
 
     open fun exitAnim(): Int = R.anim.fade_out
+    override fun fullScreen(): Boolean =true
     override fun beforeSetContentView() {
         super.beforeSetContentView()
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setFinishOnTouchOutside(true)
         }
-        fullScreen = true
     }
 
     override fun setContentView(layoutResID: Int) {

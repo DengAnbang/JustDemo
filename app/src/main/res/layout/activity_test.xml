@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="72dp"-->
+        <!--android:background="@mipmap/ic_launcher"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.16000003"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<EditText-->
+        <!--android:hint="请输入手机号"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="null"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.31"-->
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<EditText-->
+        <!--android:background="null"-->
+        <!--android:hint="请输入手机号"-->
+        <!--android:id="@+id/editText"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textPassword"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.39"-->
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="登录"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.53"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="忘记密码?"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.65"-->
+        <!--tools:layout_editor_absoluteX="16dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="立即注册"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.65"-->
+        <!--tools:layout_editor_absoluteX="273dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="其他登录方式"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.75"-->
+        <!--tools:layout_editor_absoluteX="151dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@mipmap/ic_launcher"-->
+        <!--tools:layout_editor_absoluteX="29dp"-->
+        <!--tools:layout_editor_absoluteY="451dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@mipmap/ic_launcher"-->
+        <!--tools:layout_editor_absoluteX="132dp"-->
+        <!--tools:layout_editor_absoluteY="444dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@mipmap/ic_launcher"-->
+        <!--tools:layout_editor_absoluteX="254dp"-->
+        <!--tools:layout_editor_absoluteY="469dp"-->
+        <!--tools:ignore="MissingConstraints"/>-->
+</android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
-package com.dab.just.utlis.extend
+package com.dab.just.utlis.kt
 
 import android.app.Activity
+import android.os.Build
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
@@ -29,7 +30,30 @@ fun View.setText(@IdRes id: Int, string: CharSequence?, @ColorRes colorRes: Int 
     find.text = string ?: ""
     return find
 }
+fun View.getTextViewString(@IdRes id: Int): String {
+    val find = find<TextView>(id)
+    return find.text.toString().trim()
+}
+fun Activity.getTextViewString(@IdRes id: Int): String {
+    val find = find<TextView>(id)
+    return find.text.toString().trim()
+}
 
 fun View.setBackground(@IdRes id: Int, @DrawableRes res: Int) {
     find<View>(id).backgroundResource = res
+}
+
+fun initStatusBar(view: View) {
+    var statusBarHeight = 0
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+        //获取status_bar_height资源的ID
+        val resourceId = view.context.resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            statusBarHeight = view.context.resources.getDimensionPixelSize(resourceId)
+        }
+    }
+    val layoutParams = view.layoutParams
+    layoutParams.height = statusBarHeight
+    view.layoutParams = layoutParams
 }

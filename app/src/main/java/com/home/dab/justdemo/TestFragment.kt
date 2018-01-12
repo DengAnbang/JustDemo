@@ -13,5 +13,5 @@ class TestFragment : LazyFragment() {
 
     }
 
-    override fun viewLayoutID(): Int = R.layout.fragment_text
+    override fun viewLayoutID(): Int = R.layout.activity_test
 }

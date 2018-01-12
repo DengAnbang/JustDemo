@@ -6,9 +6,10 @@ import android.view.View
 import com.dab.just.activity.SelectPhotoDialogActivity
 import com.dab.just.base.LazyFragment
 import com.dab.just.custom.PinchImageView
-import com.dab.just.utlis.extend.click
-import com.dab.just.utlis.extend.loge
-import com.dab.just.utlis.extend.requestSucceed
+
+import com.dab.just.utlis.kt.click
+import com.dab.just.utlis.kt.loge
+import com.dab.just.utlis.kt.requestSucceed
 import com.home.dab.justdemo.net.HttpManager
 import org.jetbrains.anko.support.v4.find
 

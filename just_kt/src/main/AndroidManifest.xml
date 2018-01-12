@@ -7,5 +7,7 @@
         <activity
             android:name=".activity.SelectPhotoDialogActivity"
             android:theme="@style/Dialog"/>
+        <activity android:name=".activity.WebViewActivity"/>
+        <activity android:name=".activity.ImagePagerActivity"/>
     </application>
 </manifest>

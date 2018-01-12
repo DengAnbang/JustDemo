@@ -12,9 +12,9 @@ import android.view.Gravity
 import com.dab.just.JustConfig
 import com.dab.just.R
 import com.dab.just.base.BaseDialogActivity
-import com.dab.just.utlis.extend.click
-import com.dab.just.utlis.extend.isTrue
-import com.dab.just.utlis.extend.rxPermissionsWrite
+import com.dab.just.utlis.kt.click
+import com.dab.just.utlis.kt.isTrue
+import com.dab.just.utlis.kt.rxPermissionsWrite
 import org.jetbrains.anko.toast
 import java.io.File
 import java.util.*

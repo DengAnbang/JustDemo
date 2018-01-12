@@ -30,7 +30,7 @@ interface ImageViewPromise {
     /**
      * 设置图片为圆形
      */
-    fun setImageRound(roundingRadius:Int):ImageViewPromise
+    fun setImageRound():ImageViewPromise
 
     /**
      * 设置加载本地图片

@@ -5,6 +5,11 @@
         <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
         <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
     </style>
+    <!--从上往下弹PopupWindow-->
+    <style name="AnimTopToBottom" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim_top</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim_top</item>
+    </style>
     <!--加载进度-->
     <style name="Theme.ProgressDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowIsFloating">true</item>
@@ -44,15 +49,51 @@
     <style name="Dialog" parent="BaseDialog">
         <item name="android:windowAnimationStyle">@style/Base.Animation.Dialog.Style</item>
     </style>
-    <!--图片加载控件的自定义属性-->
-    <declare-styleable name="ImageViewJust">
-        <attr name="src" format="reference|integer"/>
-        <attr name="placeholder" format="reference|integer"/>
-        <attr name="error" format="reference|integer"/>
-        <attr name="defaultRoundingRadius" format="integer"/>
-        <attr name="angle_left" format="integer"/>
-        <attr name="angle_top" format="integer"/>
-        <attr name="angle_right" format="integer"/>
-        <attr name="angle_bottom" format="integer"/>
-    </declare-styleable>
+    <!--密码输入框-->
+    <style name="EditText_password">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+        <item name="android:hint">"请输入密码"</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:maxLength">18</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/just_color_333333</item>
+    </style>
+    <!--手机号输入-->
+    <style name="EditText_phone">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+        <item name="android:hint">"请输入手机号"</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">11</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/just_color_333333</item>
+    </style>
+    <!--验证码-->
+    <style name="EditText_captcha">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+        <item name="android:hint">"请输入验证码"</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">@integer/captcha_length</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/just_color_333333</item>
+    </style>
+    <!--提交按钮-->
+    <style name="Btn_submit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_gradient_btn</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/just_color_ffffff</item>
+    </style>
 </resources>

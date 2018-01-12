@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dab.just.R
 import com.dab.just.net.http.JustHttpManager
-import com.dab.just.utlis.extend.click
+import com.dab.just.utlis.kt.click
 
 import java.util.*
 

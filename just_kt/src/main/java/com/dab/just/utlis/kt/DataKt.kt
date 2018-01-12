@@ -1,4 +1,4 @@
-package com.dab.just.utlis.extend
+package com.dab.just.utlis.kt
 
 /**
  * Created by dab on 2018/1/6 0006 15:57
