@@ -22,6 +22,10 @@ android {
 
     }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 ext.anko_version = '0.10.1'
 ext.support_version = '26.1.0'
