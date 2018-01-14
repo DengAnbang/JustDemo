@@ -1,1 +1,1 @@
-include ':app', ':just_kt'
+include ':app', ':just_kt', ':ushare_java'

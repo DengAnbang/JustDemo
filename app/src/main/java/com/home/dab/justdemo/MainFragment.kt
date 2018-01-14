@@ -5,13 +5,10 @@ import android.content.Intent
 import android.view.View
 import com.dab.just.activity.SelectPhotoDialogActivity
 import com.dab.just.base.LazyFragment
-import com.dab.just.custom.PinchImageView
-
 import com.dab.just.utlis.kt.click
 import com.dab.just.utlis.kt.loge
 import com.dab.just.utlis.kt.requestSucceed
 import com.home.dab.justdemo.net.HttpManager
-import org.jetbrains.anko.support.v4.find
 
 /**
  * Created by dab on 2018/1/6 0006 12:51
@@ -29,7 +26,7 @@ class MainFragment : LazyFragment() {
                         }
 //                startActivityForResult<SelectPhotoDialogActivity>(55)
             }
-            find<PinchImageView>(R.id.ziv_test).setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
+//            find<PinchImageView>(R.id.ziv_test).setImage("http://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg")
         }
     }
 
