@@ -2,6 +2,7 @@ package com.dab.just.base
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.AttributeSet
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -67,6 +68,13 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
                 .load(url)
+                .into(this)
+        return this
+    }
+    override fun setImage(bitmap: Bitmap): ImageViewPromise {
+        Glide.with(context)
+                .setDefaultRequestOptions(requestOptions)
+                .load(bitmap)
                 .into(this)
         return this
     }

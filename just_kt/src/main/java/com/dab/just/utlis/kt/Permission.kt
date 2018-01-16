@@ -32,6 +32,17 @@ fun Activity.rxPermissionsContacts(agree: () -> Unit) {
                 }
             }
 }
+fun Activity.rxPermissionsCamera(agree: () -> Unit) {
+    val rxPermissions = RxPermissions(this)
+    rxPermissions.request(Manifest.permission.CAMERA)
+            .subscribe {
+                if (it) {
+                    agree.invoke()
+                } else {
+                    showToast("没有访问相机权限，请先授权")
+                }
+            }
+}
 
 fun Activity.rxPermissionsWrite(agree: () -> Unit) {
     val rxPermissions = RxPermissions(this)

@@ -9,5 +9,6 @@
             android:theme="@style/Dialog"/>
         <activity android:name=".activity.WebViewActivity"/>
         <activity android:name=".activity.ImagePagerActivity"/>
+        <activity android:name=".activity.ScanQrActivity"/>
     </application>
 </manifest>

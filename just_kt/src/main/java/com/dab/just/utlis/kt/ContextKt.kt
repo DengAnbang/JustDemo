@@ -12,9 +12,9 @@ fun Context.dp2px(dpValue: Int): Int {
     return (dpValue * scale + 0.5f).toInt()
 }
 
-fun Context.sp2px(dpValue: Int): Int {
+fun Context.sp2px(dpValue: Int): Float {
     val fontScale = this.resources.displayMetrics.scaledDensity
-    return (dpValue * fontScale + 0.5f).toInt()
+    return (dpValue * fontScale + 0.5f)
 }
 
 fun Context.getColorKt(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)

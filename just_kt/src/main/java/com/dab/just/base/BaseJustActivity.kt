@@ -40,7 +40,7 @@ abstract class BaseJustActivity : AppCompatActivity(), RequestHelper {
         setContentView(R.layout.activity_layout_base)
         if (setContentViewRes() <= 0) return
         layoutInflater.inflate(setContentViewRes(), rootLayout, true)
-        val statusBar = find<View>(R.id.view_status_bar)
+        val statusBar = find<View>(R.id.view_base_status_bar)
         initStatusBar(statusBar)
         setStatusBar(statusBar)
         setTitleBar(find<View>(R.id.layout_title_bar))

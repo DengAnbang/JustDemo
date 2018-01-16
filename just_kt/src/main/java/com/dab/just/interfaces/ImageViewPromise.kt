@@ -1,5 +1,6 @@
 package com.dab.just.interfaces
 
+import android.graphics.Bitmap
 import android.support.annotation.DrawableRes
 
 /**
@@ -14,6 +15,7 @@ interface ImageViewPromise {
      * @param url
      */
     fun setImage(url: String):ImageViewPromise
+    fun setImage(bitmap: Bitmap):ImageViewPromise
 
     /**
      * 设置加载本地app内图片

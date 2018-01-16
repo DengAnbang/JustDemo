@@ -7,7 +7,7 @@
 
     <View
         android:background="@color/app_status_bar_color"
-        android:id="@+id/view_status_bar"
+        android:id="@+id/view_base_status_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         />

@@ -4,6 +4,8 @@
     <color name="app_status_bar_color">#ffffff</color>
     <color name="app_title_bar_color">#ffffff</color>
     <color name="just_color_333333">#333333</color>
+    <color name="just_color_ff8c00">#ff8c00</color>
+    <color name="just_color_999999">#999999</color>
     <color name="just_color_f7f7f7">#f7f7f7</color>
     <color name="just_color_cccccc">#cccccc</color>
     <color name="just_color_ffffff">#ffffff</color>

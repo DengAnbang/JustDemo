@@ -10,7 +10,7 @@ open class JustHttpManager {
         val DeBugRequest = true//请求的日志
         val isExtranet = false//是否外网 true 外网
         val SOCKET_SERVER = if (isExtranet) "" else "192.168.3.228"
-        val BASE_URL = if (isExtranet) "" else "http://192.168.1.3:80/"
+        val BASE_URL = if (isExtranet) "" else "http://192.168.1.3:9090/"
         val SOCKET_PORT = 8066
         //高德web端url
         val GAODE_URL = "http://restapi.amap.com/v3/"
