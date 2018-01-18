@@ -55,3 +55,14 @@ fun Activity.rxPermissionsWrite(agree: () -> Unit) {
                 }
             }
 }
+fun Activity.rxPermissionsRead(agree: () -> Unit) {
+    val rxPermissions = RxPermissions(this)
+    rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .subscribe {
+                if (it) {
+                    agree.invoke()
+                } else {
+                    showToast("没有访问本地存储权限，请先授权")
+                }
+            }
+}

@@ -11,7 +11,7 @@ import org.jetbrains.anko.wrapContent
 /**
  *基础dialog式activity。子activity在manifest注册时需要设置为Dialog，或类似的theme。
  */
-abstract open class BaseDialogActivity : BaseJustActivity() {
+abstract  class BaseDialogActivity : BaseJustActivity() {
 
     open fun exitAnim(): Int = R.anim.fade_out
     override fun fullScreen(): Boolean =true

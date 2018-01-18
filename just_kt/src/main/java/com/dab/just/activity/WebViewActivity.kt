@@ -63,6 +63,6 @@ class WebViewActivity : BaseJustActivity() {
         }
     }
 
-     open fun resetTitle() = false
+    fun resetTitle() = false
 
 }

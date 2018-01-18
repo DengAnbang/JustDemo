@@ -43,7 +43,8 @@ fun Activity.getTextViewString(@IdRes id: Int): String {
 }
 
 
-fun View.initStatusBar() {
+fun View?.initStatusBar() {
+    if (this==null)return
     var statusBarHeight = 0
     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
         //获取status_bar_height资源的ID

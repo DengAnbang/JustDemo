@@ -2,10 +2,14 @@
           package="com.dab.just">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application>
         <activity
             android:name=".activity.SelectPhotoDialogActivity"
+            android:theme="@style/Dialog"/>
+        <activity
+            android:name=".activity.SelectVideoDialogActivity"
             android:theme="@style/Dialog"/>
         <activity android:name=".activity.WebViewActivity"/>
         <activity android:name=".activity.ImagePagerActivity"/>

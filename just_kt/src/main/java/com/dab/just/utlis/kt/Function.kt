@@ -35,8 +35,7 @@ fun loge(msg: Any? = null, stack: Int = 2, myTag: String = "tanguy_loge") {
     val methodName = stackTrace[stack].methodName
     val lineNumber = stackTrace[stack].lineNumber
     val tag = "($className:$lineNumber)"
-    val msg = ("$myTag $methodName:${msg.toString()}")
-    Log.e(tag, msg)
+    Log.e(tag, ("$myTag $methodName:${msg.toString()}"))
 }
 
 /**
@@ -78,13 +77,11 @@ inline fun captchaCountDownTimer(crossinline block: (finish: Boolean, msg: Strin
  * 计时器(注意不需要的时候要取消订阅)
  */
 inline fun rxTimer(interval: Long, crossinline block: (times: Long) -> Unit): Disposable {
-    var subscribe: Disposable? = null
-    subscribe = Observable.interval(0, interval, TimeUnit.MILLISECONDS)
+    return Observable.interval(0, interval, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 block.invoke(it)
             }
-    return subscribe
 }
 
 /**
