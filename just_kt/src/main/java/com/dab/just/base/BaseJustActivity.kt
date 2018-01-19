@@ -3,6 +3,7 @@ package com.dab.just.base
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -90,6 +91,14 @@ abstract class BaseJustActivity : AppCompatActivity(), RequestHelper {
             setText(it,msg)
         }
         return find(R.id.tv_base_btn)
+    }
+    /**
+     * 设置右边的按钮（图片）
+     */
+    fun setRightText(@DrawableRes res: Int, onClick:(View)->Unit):TextView=find<TextView>(R.id.tv_base_btn).apply {
+        setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,res,0)
+        visibility(this,true)
+        click(this,onClick)
     }
     private fun initStatusBar(view: View) {
         var statusBarHeight = 0

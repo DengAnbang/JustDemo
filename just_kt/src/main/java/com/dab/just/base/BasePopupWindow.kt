@@ -15,6 +15,7 @@ import com.dab.just.R
 import com.dab.just.custom.ProgressDialog
 import com.dab.just.interfaces.RequestHelper
 import com.dab.just.utlis.ToastUtils
+import com.dab.just.utlis.kt.click
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -38,7 +39,13 @@ abstract class BasePopupWindow(private val activity: Activity) : PopupWindow(act
     open fun setFocusable(): Boolean = true
     open fun setAnim() = R.style.AnimBottomToTop
 
-    open fun initView(view: View) {}
+    open fun initView(view: View) {
+        click(contentView) {
+            if (setFocusable()) {
+                dismiss()
+            }
+        }
+    }
 
     open fun initEvent() {}
     open fun addDisposable(disposable: Disposable) {

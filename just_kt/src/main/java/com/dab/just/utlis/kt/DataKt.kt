@@ -7,3 +7,6 @@ fun Boolean?.isTrue(): Boolean {
     if (this == null) return false
     return this
 }
+fun Long.toTimeString()=if (this <= 0)  "00:00" else String.format("%02d:%02d",this / 60,this % 60)
+
+fun Int.toTimeString()=if (this <= 0)  "00:00" else String.format("%02d:%02d",this / 60,this % 60)

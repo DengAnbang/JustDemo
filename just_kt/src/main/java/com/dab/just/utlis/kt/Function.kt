@@ -19,6 +19,7 @@ import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
+import java.util.regex.Pattern
 
 
 /**
@@ -38,6 +39,18 @@ fun loge(msg: Any? = null, stack: Int = 2, myTag: String = "tanguy_loge") {
     Log.e(tag, ("$myTag $methodName:${msg.toString()}"))
 }
 
+/**
+ * 是否手机号（目前匹配13，14，15，17，18开头的手机号）
+ *
+ * @param phone 手机号
+ * @return 结果
+ */
+fun isPhoneNumber(phone: String): Boolean {
+    val regexp = "((15[0-9])|(17[3678])|(18[0-9])|(14[57])|(13[0-9]))[0-9]{8}"
+    val regex = Pattern.compile(regexp)
+    val matcher = regex.matcher(phone)
+    return matcher.find()
+}
 /**
  * 倒计时s
  */

@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.dab.just.R
 
 /**
  * Created by dab on 2018/1/5 0005 17:48
@@ -26,7 +28,11 @@ abstract class NullableAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adap
 
     abstract fun getItemCountLike(): Int
 
-    open fun onBindViewHolderLike(holder: NoDataHolder, position: Int) {}
+    open fun onBindViewHolderLike(holder: NoDataHolder, position: Int) {
+       holder.itemView.findViewById<TextView>(R.id.tv_no_data)?.text=getNoDataString()
+    }
+
+    open fun getNoDataString(): CharSequence? ="暂时没有数据"
 
     open fun getItemViewTypeLike(position: Int): Int =0
 

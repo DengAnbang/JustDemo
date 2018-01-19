@@ -41,11 +41,9 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
         }
     }
 
-    var itemClick: ((viewId: Int, position: Int,data:T) -> Unit)? = null
-
-    fun setOnItemClick(click: ((viewId: Int, position: Int,data:T) -> Unit)) {
-        itemClick = click
-    }
+    open var itemClick: ((viewId: Int, position: Int,data:T) -> Unit)? = null
+    open fun itemClick(viewId: Int, position: Int,data:T) {}
+    var itemLongClick: ((viewId: Int, position: Int,data:T) -> Unit)? = null
 
     //    下面是刷新部分的代码
     ////////////////////////////////////////////

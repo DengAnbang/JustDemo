@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.AttributeSet
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
@@ -16,6 +17,13 @@ import com.dab.just.interfaces.ImageViewPromise
  * 图片加载控件,将常用功能抽象成ImageViewPromise接口了,默认使用Glide实现,如果要换加载框架,就修改这个类就好了
  */
 open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageViewPromise {
+    companion object {
+        fun setImage(imageView: ImageView,url: String) {
+            Glide.with(imageView.context)
+                    .load(url)
+                    .into(imageView)
+        }
+    }
     open var requestOptions = RequestOptions()
     private var defaultSrc = -1
     private var defaultError = R.mipmap.c1_img1

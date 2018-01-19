@@ -35,4 +35,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile project(path: ':just_kt')
     compile project(path: ':ushare_java')
+
+    compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.2'
 }
