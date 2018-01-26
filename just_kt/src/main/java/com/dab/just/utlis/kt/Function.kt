@@ -1,9 +1,6 @@
 package com.dab.just.utlis.kt
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
-import android.provider.Settings
 import android.util.Log
 import com.dab.just.JustConfig
 import com.dab.just.bean.ResultData
@@ -29,14 +26,15 @@ import java.util.regex.Pattern
 /**
  * 打印日志,快速定位到日志的位置,会收集栈的信息
  */
-fun loge(msg: Any? = null, stack: Int = 2, myTag: String = "tanguy_loge") {
-    if (!JustConfig.DeBug) return
+fun loge(msg: Any? = null, stack: Int = 2, myTag: String = "tanguy_loge"): Any? {
+    if (!JustConfig.DeBug) return msg
     val stackTrace = Throwable().stackTrace
     val className = stackTrace[stack].fileName
     val methodName = stackTrace[stack].methodName
     val lineNumber = stackTrace[stack].lineNumber
     val tag = "($className:$lineNumber)"
     Log.e(tag, ("$myTag $methodName:${msg.toString()}"))
+    return msg
 }
 
 /**
@@ -120,11 +118,6 @@ private fun isEmojiCharacter(codePoint: Char): Boolean {
             codePoint.toInt() in 0x10000..0x10FFFF)
 }
 
-/**
- * 获取设备id
- */
-@SuppressLint("HardwareIds")
-fun Context.getDeviceId(): String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
 /**
  * 修改屏幕的透明度
@@ -164,7 +157,7 @@ fun hindCarNumber(carNumber: String): String {
 fun <O, I : ResultData<O>> Observable<I>.requestSucceed(requestHelper: RequestHelper, showLoadDialog: Boolean = true, data: (data: O) -> Unit) {
     this.request(requestHelper, showLoadDialog) {
         if (it == null) return@request
-        if (it.code == 0) {
+        if (it.code == 1) {
             data.invoke(it.data as O)
         } else {
             requestHelper.showToast(it.msg)

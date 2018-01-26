@@ -118,7 +118,7 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
     @SuppressLint("CheckResult")
     override fun setPlaceholderImage(res: Int): ImageViewPromise {
         if (defaultPlaceholder != -1) {
-            requestOptions.placeholder(defaultPlaceholder)
+            requestOptions.placeholder(res)
         }
         return this
     }
@@ -126,7 +126,7 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
     @SuppressLint("CheckResult")
     override fun setFailureImage(res: Int): ImageViewPromise {
         if (defaultError != -1) {
-            requestOptions.error(defaultError)
+            requestOptions.error(res)
         }
         return this
     }

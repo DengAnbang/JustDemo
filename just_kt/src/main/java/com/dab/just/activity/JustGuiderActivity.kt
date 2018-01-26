@@ -38,6 +38,7 @@ abstract class JustGuiderActivity : BaseJustActivity(){
                     }
                     this@JustGuiderActivity.visibility(R.id.btn_skip,position!=3)
                     this@JustGuiderActivity.visibility(R.id.tv_finish,position==3)
+                    this@JustGuiderActivity.visibility(R.id.rg_indicate,position!=3)
                 }
             })
         }

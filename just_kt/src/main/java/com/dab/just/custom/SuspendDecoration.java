@@ -1,7 +1,7 @@
 package com.dab.just.custom;
 
+import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.ColorInt;
@@ -14,7 +14,7 @@ import android.view.View;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static com.dab.just.custom.SuspendDecoration.TitleGravity.TITLE_GRAVITY_CENTER;
+
 
 
 /**
@@ -23,7 +23,7 @@ import static com.dab.just.custom.SuspendDecoration.TitleGravity.TITLE_GRAVITY_C
  */
 
 public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
-    @IntDef({TITLE_GRAVITY_CENTER, TitleGravity.TITLE_GRAVITY_LEFT,TitleGravity.TITLE_GRAVITY_RIGHT})
+    @IntDef({TitleGravity.TITLE_GRAVITY_CENTER, TitleGravity.TITLE_GRAVITY_LEFT,TitleGravity.TITLE_GRAVITY_RIGHT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface TitleGravity {
         int TITLE_GRAVITY_CENTER = 0;
@@ -37,7 +37,7 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
     private Paint mBackgroundPaint;//悬浮窗的画笔
     private TextPaint mTextPaint;//悬浮窗内容的画笔
     @TitleGravity
-    private int mTitleGravity;//悬浮窗的内容显示位置(左,中,右)
+    private int mTitleGravity=SuspendDecoration.TitleGravity.TITLE_GRAVITY_LEFT;//悬浮窗的内容显示位置(左,中,右)
     private int mTextOffsetX, mTextOffsetY;
 
     private Rect mRect;//悬浮窗的的矩形(动态改变的)
@@ -63,28 +63,37 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
      * @param titleGravity 悬浮窗的显示位置
      */
     public SuspendDecoration(int titleHeight, int titleSize, @TitleGravity int titleGravity) {
-        mTitleHeight = titleHeight;
-        mTitleGravity = titleGravity;
+        init();
+        setTitleHeight(titleHeight);
+        setTitleSize(titleSize);
+        setTitleGravity(titleGravity);
+    }
+
+    /**
+     * 进行一些默认参数设置
+     * @param context
+     */
+    public SuspendDecoration(Context context) {
+        init();
+        setTitleHeight(dp2px(context, 30));
+        setTitleSize(dp2px(context, 14));
+        setTitleGravity(SuspendDecoration.TitleGravity.TITLE_GRAVITY_LEFT);
+        setBackgroundColor(0xfff5f5f5);
+        setTextColor(0xff999999);
+        setTextOffsetX(dp2px(context, 16));
+    }
+
+    private void init() {
         mBackgroundPaint = new Paint();
-//        mBackgroundPaint.setColor(Color.GREEN);
         //设置悬浮栏中文本的画笔
         mTextPaint = new TextPaint();
         mTextPaint.setAntiAlias(true);
-        mTextPaint.setTextSize(titleSize);
-        mTextPaint.setColor(Color.DKGRAY);
         mRect = new Rect();
     }
 
-    public SuspendDecoration() {
-        mTitleHeight = 100;
-        mBackgroundPaint = new Paint();
-        mBackgroundPaint.setColor(Color.GREEN);
-        //设置悬浮栏中文本的画笔
-        mTextPaint = new TextPaint();
-        mTextPaint.setAntiAlias(true);
-        mTextPaint.setTextSize(30);
-        mTextPaint.setColor(Color.DKGRAY);
-        mRect = new Rect();
+    private int dp2px(Context context,int dpValue) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * density + 0.5f);
     }
 
     /**
@@ -156,7 +165,7 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
         canvas.restore();
     }
 
-    public int getLastVisibleItemPosition(RecyclerView parent) {
+    private int getLastVisibleItemPosition(RecyclerView parent) {
         int lastVisibleItemPosition = -10;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof LinearLayoutManager) {
@@ -169,7 +178,7 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
         return lastVisibleItemPosition;
     }
 
-    public int getFirstVisibleItemPosition(RecyclerView parent) {
+    private int getFirstVisibleItemPosition(RecyclerView parent) {
         int firstVisibleItemPosition = -10;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof LinearLayoutManager) {
@@ -182,7 +191,7 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
         return firstVisibleItemPosition;
     }
 
-    public int getFirstCompletelyVisibleItemPosition(RecyclerView parent) {
+    private int getFirstCompletelyVisibleItemPosition(RecyclerView parent) {
         int firstVisibleItemPosition = -10;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof LinearLayoutManager) {
@@ -294,7 +303,7 @@ public abstract class SuspendDecoration extends RecyclerView.ItemDecoration {
             case TitleGravity.TITLE_GRAVITY_RIGHT:
                 mTextPaint.setTextAlign(Paint.Align.RIGHT);
                 return rect.right + mTextOffsetX;
-            case TITLE_GRAVITY_CENTER:
+            case TitleGravity.TITLE_GRAVITY_CENTER:
                 mTextPaint.setTextAlign(Paint.Align.CENTER);
                 return rect.centerX() + mTextOffsetX;
             default:

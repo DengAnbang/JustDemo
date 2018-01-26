@@ -32,22 +32,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
-        android:background="@drawable/blue_round_5"
+        android:background="@drawable/c666666_round_5"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="6dp"
         android:text="立即体验"
-        android:textColor="@color/just_color_19b595"
+        android:textColor="@color/just_color_666666"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="gone"
+      />
 
     <RadioGroup
+        android:id="@+id/rg_indicate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

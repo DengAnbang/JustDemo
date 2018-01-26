@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,6 +67,28 @@ public class StackManager {
                 finishActivity(activity);
             }
         }
+    }
+    /**
+     * 结束指定类名的Activity
+     */
+    public static void finishExcludeActivity(Class<?> cls) {
+        if (mActivitys == null || mActivitys.isEmpty()) {
+            return;
+        }
+        Iterator<Activity> iterator = mActivitys.iterator();
+        while (iterator.hasNext()) {
+            Activity next = iterator.next();
+            if (!next.getClass().equals(cls)) {
+                next.finish();
+                iterator.remove();
+            }
+        }
+//        for (Activity activity : mActivitys) {
+//            Log.e("5555", "finishExcludeActivity: "+activity.getClass() );
+//            if (!activity.getClass().equals(cls)) {
+//                finishActivity(activity);
+//            }
+//        }
     }
 
     /**

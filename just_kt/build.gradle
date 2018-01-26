@@ -28,7 +28,7 @@ android {
     }
 }
 ext.anko_version = '0.10.1'
-ext.support_version = '26.1.0'
+ext.support_version = '27.0.2'
 ext.retrofit_version = '2.3.0'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -68,6 +68,8 @@ dependencies {
      */
     implementation 'cn.bingoogolapple:bga-qrcode-zbar:1.2.0'
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.0'
+    //    multidex
+    implementation 'com.android.support:multidex:1.0.2'
 }
 repositories {
     mavenCentral()

@@ -24,8 +24,8 @@ import io.reactivex.disposables.Disposable
  */
 abstract class BasePopupWindow(private val activity: Activity) : PopupWindow(activity), RequestHelper {
 
-    private var mCompositeDisposable:CompositeDisposable? =null
-    private var mProgressDialog : ProgressDialog?=null
+    private var mCompositeDisposable: CompositeDisposable? = null
+    private var mProgressDialog: ProgressDialog? = null
     @LayoutRes
     abstract fun setContentRes(): Int
 
@@ -33,15 +33,18 @@ abstract class BasePopupWindow(private val activity: Activity) : PopupWindow(act
     open fun setBackgroundColor(): Int = Color.TRANSPARENT
 
     open fun setBackgroundAlpha(): Float = 0.7f
+
+    open fun setFocusable(): Boolean = true
     /**
      * 是否点击外部消失
      */
-    open fun setFocusable(): Boolean = true
+    open fun setClickDismiss(): Boolean = true
+
     open fun setAnim() = R.style.AnimBottomToTop
 
     open fun initView(view: View) {
         click(contentView) {
-            if (setFocusable()) {
+            if (setClickDismiss()) {
                 dismiss()
             }
         }
@@ -49,7 +52,7 @@ abstract class BasePopupWindow(private val activity: Activity) : PopupWindow(act
 
     open fun initEvent() {}
     open fun addDisposable(disposable: Disposable) {
-        mCompositeDisposable= mCompositeDisposable?: CompositeDisposable()
+        mCompositeDisposable = mCompositeDisposable ?: CompositeDisposable()
         mCompositeDisposable?.add(disposable)
     }
 
@@ -66,9 +69,11 @@ abstract class BasePopupWindow(private val activity: Activity) : PopupWindow(act
             }
         }
     }
-init {
-    initThis()
-}
+
+    init {
+        initThis()
+    }
+
     private fun initThis() {
         val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val menuView = inflater.inflate(setContentRes(), null)
@@ -79,7 +84,7 @@ init {
         //设置SelectPicPopupWindow弹出窗体的高
         this.height = ViewGroup.LayoutParams.MATCH_PARENT
         //设置SelectPicPopupWindow弹出窗体可点击
-        this.isFocusable = setFocusable()
+        this.isFocusable = true
         //设置SelectPicPopupWindow弹出窗体动画效果
         this.animationStyle = setAnim()
         //实例化一个ColorDrawable颜色为全透明
@@ -117,11 +122,13 @@ init {
 
     override fun showLoadDialog(msg: String, canCancel: Boolean) {
         if (!isShowing) return
-        mProgressDialog=mProgressDialog?: ProgressDialog(activity, R.style.Theme_ProgressDialog)
+        mProgressDialog = mProgressDialog ?: ProgressDialog(activity, R.style.Theme_ProgressDialog)
         mProgressDialog?.let {
             it.setCanceledOnTouchOutside(canCancel)
             it.setMessage(msg)
-            if (!it.isShowing) { it.show() }
+            if (!it.isShowing) {
+                it.show()
+            }
         }
     }
 

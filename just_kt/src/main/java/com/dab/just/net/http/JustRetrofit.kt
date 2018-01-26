@@ -10,14 +10,20 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  */
 class JustRetrofit private constructor() {
-companion object {
-    val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        JustRetrofit()
+    companion object {
+        private var mJustHttpManager:JustHttpManager?=null
+        fun getInstance(justHttpManager: JustHttpManager) :JustRetrofit{
+            mJustHttpManager=justHttpManager
+            return instance
+        }
+
+        private val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+            JustRetrofit()
+        }
     }
-}
     private val retrofit by lazy {
         val builder = Retrofit.Builder()
-                .baseUrl(JustHttpManager.BASE_URL)//注意此处,设置服务器的地址
+                .baseUrl(mJustHttpManager!!.getBaseUrl())//注意此处,设置服务器的地址
                 .addConverterFactory(GsonConverterFactory.create())//用于Json数据的转换,非必须
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//用于返回Rxjava调用,非必须
         if (JustHttpManager.DeBugRequest) {

@@ -49,15 +49,15 @@ class ImagePagerActivity : BaseJustActivity() {
 
 
     inner class ImagePagerAdapter(private val urls: ArrayList<String>) : PagerAdapter() {
-        override fun isViewFromObject(view: View?, `object`: Any?)=view==`object`
+        override fun isViewFromObject(view: View, `object`: Any)=view==`object`
         override fun getCount()=urls.size
-        override fun destroyItem(container: ViewGroup?, position: Int, `object`: Any?) {
-            container?.removeView(`object` as View)
+        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+            container.removeView(`object` as View)
         }
 
-        override fun instantiateItem(container: ViewGroup?, position: Int): Any {
+        override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val pinchImageView = PinchImageView(this@ImagePagerActivity)
-            container?.addView(pinchImageView, ViewGroup.LayoutParams.MATCH_PARENT,
+            container.addView(pinchImageView, ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT)
             pinchImageView.setImage(urls[position])
             return pinchImageView

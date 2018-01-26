@@ -32,7 +32,7 @@
             android:textColor="@color/just_color_333333"
             android:textSize="17sp"
             android:visibility="gone"
-            android:padding="13dp"
+            android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:id="@+id/tv_base_btn"

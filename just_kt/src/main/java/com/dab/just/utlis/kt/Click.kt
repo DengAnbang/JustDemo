@@ -25,6 +25,6 @@ inline fun click(view: View, crossinline onClick: (View) -> Unit) {
 }
 
 inline fun View.click(@IdRes id: Int, crossinline onClick: (View) -> Unit) {
-    val view: View = this.findViewById(id)
+    val view: View = this.findViewById(id) ?: return
     click(view, onClick)
 }

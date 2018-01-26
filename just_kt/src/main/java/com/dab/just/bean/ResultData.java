@@ -1,12 +1,17 @@
 package com.dab.just.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by dab on 2018/1/4 0004 13:35
  */
 
 public class ResultData<T> {
+    @SerializedName("ret")
     private int code;
+    @SerializedName("data")
     private T data;
+    @SerializedName("msg")
     private String msg;
 
     public int getCode() {

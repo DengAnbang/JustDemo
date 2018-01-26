@@ -115,7 +115,9 @@ abstract class LazyFragment : Fragment(), RequestHelper {
     }
 
     override fun showToast(msg: String?) {
-        ToastUtils.showToast(activity,msg)
+        activity?.let {
+            ToastUtils.showToast(it,msg)
+        }
     }
 
     override fun showLoadDialog(msg: String, canCancel: Boolean) {

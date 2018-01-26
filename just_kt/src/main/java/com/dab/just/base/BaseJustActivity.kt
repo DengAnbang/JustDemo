@@ -130,7 +130,7 @@ abstract class BaseJustActivity : AppCompatActivity(), RequestHelper {
     }
 
     override fun showLoadDialog(msg: String, canCancel: Boolean) {
-        if (!isFinishing) return
+        if (isFinishing) return
         if (mProgressDialog == null)
             mProgressDialog = ProgressDialog(this, R.style.Theme_ProgressDialog)
         mProgressDialog!!.setCanceledOnTouchOutside(false)
