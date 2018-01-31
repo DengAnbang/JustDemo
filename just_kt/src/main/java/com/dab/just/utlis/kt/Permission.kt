@@ -66,3 +66,14 @@ fun Activity.rxPermissionsRead(agree: () -> Unit) {
                 }
             }
 }
+fun Activity.rxPermissionsAudio(agree: () -> Unit) {
+    val rxPermissions = RxPermissions(this)
+    rxPermissions.request(Manifest.permission.RECORD_AUDIO)
+            .subscribe {
+                if (it) {
+                    agree.invoke()
+                } else {
+                    showToast("没有录音权限，请先授权")
+                }
+            }
+}

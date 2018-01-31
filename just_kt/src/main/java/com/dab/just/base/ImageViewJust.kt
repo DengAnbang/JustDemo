@@ -17,14 +17,19 @@ import com.dab.just.interfaces.ImageViewPromise
  * 图片加载控件,将常用功能抽象成ImageViewPromise接口了,默认使用Glide实现,如果要换加载框架,就修改这个类就好了
  */
 open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageViewPromise {
+
+
     companion object {
         fun setImage(imageView: ImageView,url: String) {
             Glide.with(imageView.context)
                     .load(url)
                     .into(imageView)
         }
+        var prefixPath = "http://106.15.192.250:8030/api"
     }
     open var requestOptions = RequestOptions()
+    open var imagePath = ""
+
     private var defaultSrc = -1
     private var defaultError = R.mipmap.c1_img1
     private var defaultPlaceholder = R.mipmap.c1_img1
@@ -54,6 +59,7 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
 
     @SuppressLint("CheckResult")
     private fun init() {
+//        prefixPath=JustRetrofit.baseUrl
         if (defaultSrc != -1) {
             setImage(defaultSrc)
         }
@@ -72,10 +78,11 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
 
     }
 
-    override fun setImage(url: String): ImageViewPromise {
+    override fun setImage(url: String,prefix:Boolean): ImageViewPromise {
+        imagePath=url
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
-                .load(url)
+                .load(if(prefix) (prefixPath+url).replace(" ","") else url)
                 .into(this)
         return this
     }
@@ -101,13 +108,23 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
         return this
     }
 
-    @SuppressLint("CheckResult")
-    override fun setImageRound(): ImageViewPromise {
+
+//    override fun setImageRound(): ImageViewPromise {
+//        requestOptions.transform(CircleCrop())
+//        return this
+//    }
+@SuppressLint("CheckResult")
+    override fun setImageRound(portrait: Boolean): ImageViewPromise {
+    if (portrait) {
+        setFailureImage(R.mipmap.c38_touxiang)
+        setPlaceholderImage(R.mipmap.c38_touxiang)
+    }
         requestOptions.transform(CircleCrop())
         return this
     }
 
     override fun setImageByFile(path: String): ImageViewPromise {
+        imagePath=path
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
                 .load(path)

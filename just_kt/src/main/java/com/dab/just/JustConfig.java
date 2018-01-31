@@ -33,6 +33,10 @@ public class JustConfig {
         }
         return baseFilePath;
     }
+    public static String getTestBaseFilePath() {
+
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/cache/";
+    }
 
     public static Context getApplicationContext() {
         if (mApplicationContext == null) {

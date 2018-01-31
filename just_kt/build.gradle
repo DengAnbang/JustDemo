@@ -54,22 +54,22 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 //  glide图片加载库
-    implementation ("com.github.bumptech.glide:glide:4.4.0") {
+    implementation("com.github.bumptech.glide:glide:4.4.0") {
         exclude group: "com.android.support"
     }
 
     /**
      * 二维码https://github.com/bingoogolapple/BGAQRCode-Android
-     *注意这个包 包含你so文件,大概5m左右,如果不需要,可以删除,引用报错的地方也删除(也可以自己挑选cpu架构,比如选择)
-     * ndk {
-     *      abiFilters 'armeabi-v7a'
-     * }
-     * 可以减小到700k的样子
+     * 注意这个包 包含你so文件,大概5m左右,如果不需要,可以删除,引用报错的地方也删除(也可以自己挑选cpu架构,比如选择)
+     * ndk {*      abiFilters 'armeabi-v7a'
+     *}* 可以减小到700k的样子
      */
     implementation 'cn.bingoogolapple:bga-qrcode-zbar:1.2.0'
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.0'
     //    multidex
     implementation 'com.android.support:multidex:1.0.2'
+    //内存检测
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }
 repositories {
     mavenCentral()

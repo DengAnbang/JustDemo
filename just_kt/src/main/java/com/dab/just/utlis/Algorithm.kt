@@ -1,7 +1,11 @@
 package com.dab.just.utlis
 
+import java.io.File
 import java.lang.Exception
+import java.math.BigInteger
 import java.security.MessageDigest
+
+
 
 /**
  * Created by Wendell on 2018/1/25 11:25
@@ -29,4 +33,19 @@ fun md5(str: String,hex:Boolean =true): String {
         e.printStackTrace()
     }
     return ""
+}
+
+/**
+ * 根据文件计算出文件的MD5
+ * @param file
+ * @return
+ */
+fun getFileMD5(file: File): String {
+    if (!file.isFile) {
+        return ""
+    }
+    val instance = MessageDigest.getInstance("MD5")
+    instance.update(file.readBytes())
+    val bigInt = BigInteger(1, instance.digest())
+    return bigInt.toString(16)
 }

@@ -14,7 +14,7 @@ interface ImageViewPromise {
      *
      * @param url
      */
-    fun setImage(url: String):ImageViewPromise
+    fun setImage(url: String,prefix:Boolean=true):ImageViewPromise
     fun setImage(bitmap: Bitmap):ImageViewPromise
 
     /**
@@ -32,7 +32,7 @@ interface ImageViewPromise {
     /**
      * 设置图片为圆形
      */
-    fun setImageRound():ImageViewPromise
+    fun setImageRound(portrait: Boolean =true):ImageViewPromise
 
     /**
      * 设置加载本地图片

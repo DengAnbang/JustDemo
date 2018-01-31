@@ -26,14 +26,14 @@ import java.util.regex.Pattern
 /**
  * 打印日志,快速定位到日志的位置,会收集栈的信息
  */
-fun loge(msg: Any? = null, stack: Int = 2, myTag: String = "tanguy_loge"): Any? {
+fun loge(msg: Any? = null, stack: Int = 2, myTag: String = ""): Any? {
     if (!JustConfig.DeBug) return msg
     val stackTrace = Throwable().stackTrace
     val className = stackTrace[stack].fileName
     val methodName = stackTrace[stack].methodName
     val lineNumber = stackTrace[stack].lineNumber
     val tag = "($className:$lineNumber)"
-    Log.e(tag, ("$myTag $methodName:${msg.toString()}"))
+    Log.e(tag, ("loge:$myTag $methodName:${msg.toString()}"))
     return msg
 }
 

@@ -16,14 +16,13 @@ class JustRetrofit private constructor() {
             mJustHttpManager=justHttpManager
             return instance
         }
-
         private val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
             JustRetrofit()
         }
     }
     private val retrofit by lazy {
         val builder = Retrofit.Builder()
-                .baseUrl(mJustHttpManager!!.getBaseUrl())//注意此处,设置服务器的地址
+                .baseUrl(JustHttpManager.BASE_URL)//注意此处,设置服务器的地址
                 .addConverterFactory(GsonConverterFactory.create())//用于Json数据的转换,非必须
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//用于返回Rxjava调用,非必须
         if (JustHttpManager.DeBugRequest) {

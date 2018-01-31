@@ -171,4 +171,20 @@ public class TwoTextLinearView extends LinearLayout {
     public CharSequence getRightText() {
         return rightView.getText();
     }
+
+    public TextView getLeftView() {
+        return leftView;
+    }
+
+    public void setLeftView(TextView leftView) {
+        this.leftView = leftView;
+    }
+
+    public TextView getRightView() {
+        return rightView;
+    }
+
+    public void setRightView(TextView rightView) {
+        this.rightView = rightView;
+    }
 }

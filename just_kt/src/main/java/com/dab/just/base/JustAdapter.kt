@@ -88,6 +88,9 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
      * 加载的数据
      */
     fun setLoadData(datas: List<T>?, more: Boolean = true) {
+        if (page == 1) {
+            mDatas.clear()
+        }
         if (datas != null) {
             hideFootView = if (more) {
                 datas.size < JustHttpManager.PAGE_SIZE
@@ -126,9 +129,6 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
     private fun load(load: (page: Int) -> Unit) {
         if (refreshIng) return
         refreshIng = true
-        if (page == 1) {
-            mDatas.clear()
-        }
         load.invoke(page)
     }
 
