@@ -99,6 +99,7 @@ public class AudioManager {
                 String sourcePath = mFile.getAbsolutePath();
                 String sinkPath = sourcePath.substring(0, mFile.getAbsolutePath().lastIndexOf(".")) + ".wav";
                 boolean succeed = makePCMFileToWAVFile(sourcePath, sinkPath, true);
+                mAudioRecord = null;
                 if (succeed) {
                     mFile = null;
                     return sinkPath;

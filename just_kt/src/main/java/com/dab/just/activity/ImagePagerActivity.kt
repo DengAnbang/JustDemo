@@ -59,7 +59,7 @@ class ImagePagerActivity : BaseJustActivity() {
             val pinchImageView = PinchImageView(this@ImagePagerActivity)
             container.addView(pinchImageView, ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT)
-            pinchImageView.setImage(urls[position])
+            pinchImageView.setImage(urls[position],false)
             return pinchImageView
         }
     }

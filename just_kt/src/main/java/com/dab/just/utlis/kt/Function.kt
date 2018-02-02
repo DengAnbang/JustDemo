@@ -166,6 +166,25 @@ fun <O, I : ResultData<O>> Observable<I>.requestSucceed(requestHelper: RequestHe
 }
 
 /**
+ * 一定会回调,失败的话为data为null
+ * 适用于分页加载时,关闭刷新(动画)
+ */
+fun <O, I : ResultData<O>> Observable<I>.requestComplete(requestHelper: RequestHelper, showLoadDialog: Boolean = true, data: (data: O?) -> Unit) {
+    this.request(requestHelper, showLoadDialog) {
+        if (it == null) {
+            data.invoke(null)
+            return@request
+        }
+        if (it.code == 1) {
+            data.invoke(it.data as O)
+        } else {
+            requestHelper.showToast(it.msg)
+            data.invoke(null)
+        }
+    }
+}
+
+/**
  * 返回所有的请求成功的数据,code!=0时也会返回
  * 如果需要code不为0时,不直接提示,而是需要处理的时候,使用这个
  */

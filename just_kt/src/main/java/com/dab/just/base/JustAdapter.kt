@@ -17,33 +17,32 @@ import java.util.*
  * body: (v,p) -> T
  */
 
-abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutRes private val layoutRes: Int) : NullableAdapter<RecyclerView.ViewHolder>() {
-
-    abstract fun bind(itemView: View, data: T,position: Int)
+abstract class JustAdapter<T>( @param:LayoutRes private val layoutRes: Int) : NullableAdapter<RecyclerView.ViewHolder>() {
+    val dataList =ArrayList<T>()
+    abstract fun bind(itemView: View, data: T, position: Int)
 
     override fun onCreateViewHolderLike(parent: ViewGroup, viewType: Int): JustViewHolder = JustViewHolder(LayoutInflater.from(parent.context).inflate(layoutRes, parent, false))
 
 
     override fun onBindViewHolderLike(holder: RecyclerView.ViewHolder, position: Int) {
-        bind(holder.itemView,mDatas[position],position)
+        bind(holder.itemView, dataList[position], position)
     }
 
     override fun getItemCountLike(): Int {
-        return mDatas.size
+        return dataList.size
     }
 
     inner class JustViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             click(itemView) {
-                itemClick?.invoke(itemView.id, adapterPosition,mDatas[adapterPosition])
+                itemClick?.invoke(itemView.id, adapterPosition, dataList[adapterPosition])
             }
-
         }
     }
 
-    open var itemClick: ((viewId: Int, position: Int,data:T) -> Unit)? = null
-    open fun itemClick(viewId: Int, position: Int,data:T) {}
-    var itemLongClick: ((viewId: Int, position: Int,data:T) -> Unit)? = null
+    open var itemClick: ((viewId: Int, position: Int, data: T) -> Unit)? = null
+    open fun itemClick(viewId: Int, position: Int, data: T) {}
+    var itemLongClick: ((viewId: Int, position: Int, data: T) -> Unit)? = null
 
     //    下面是刷新部分的代码
     ////////////////////////////////////////////
@@ -56,6 +55,15 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
      */
     override fun getNotDataLayout(): Int {
         return R.layout.item_just_no_data
+    }
+
+    /**
+     * 移除某个item
+     */
+    fun removeAt(position: Int) {
+        dataList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, dataList.size)
     }
 
     /**
@@ -75,7 +83,7 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
             page = 1
             load(load)
         }
-        onRefresh={
+        onRefresh = {
             if (mSrRefresh == null || !mSrRefresh!!.isRefreshing) {
                 page++
                 load(load)
@@ -85,38 +93,31 @@ abstract class JustAdapter<T>(protected val mDatas: ArrayList<T>, @param:LayoutR
     }
 
     /**
-     * 加载的数据
+     * 加载的数据(不清除原来数据)
      */
-    fun setLoadData(datas: List<T>?, more: Boolean = true) {
-        if (page == 1) {
-            mDatas.clear()
-        }
-        if (datas != null) {
-            hideFootView = if (more) {
-                datas.size < JustHttpManager.PAGE_SIZE
-            } else {
-                true
-            }
-            mDatas.addAll(datas)
-        }
+    fun setLoadData(datas: List<T>?, more: Boolean = true) :JustAdapter<T>{
         refreshIng = false
         mSrRefresh?.isRefreshing = false
+        if (datas == null || datas.isEmpty()) return this
+        if (page == 1&&canRefresh) {
+            this.dataList.clear()
+        }
+        hideFootView = if (more) datas.size < JustHttpManager.PAGE_SIZE else true
+        this.dataList.addAll(datas)
         notifyDataSetChanged()
+        return this
     }
+
     /**
      * 设置新数据(清空原来的数据)
      */
     fun setNewData(datas: List<T>?, canMore: Boolean = true) {
         if (datas != null) {
-            hideFootView = if (canMore) {
-                datas.size < JustHttpManager.PAGE_SIZE
-            } else {
-                true
-            }
-            mDatas.clear()
-            mDatas.addAll(datas)
+            hideFootView = if (canMore) datas.size < JustHttpManager.PAGE_SIZE else true
+            this.dataList.clear()
+            this.dataList.addAll(datas)
         } else {
-            mDatas.clear()
+            this.dataList.clear()
         }
         refreshIng = false
         mSrRefresh?.isRefreshing = false

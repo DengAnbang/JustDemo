@@ -17,7 +17,7 @@ import java.util.*
 fun Context.getDeviceId(): String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
 
-fun getTimeDDMM(time: Long, nowTime: Long = System.currentTimeMillis()): String {
+fun Long.getTimeDDMM(nowTime: Long = System.currentTimeMillis()): String {
     fun getStartTimeOfDay(now: Long): Long {
         val tz = "GMT+8"
         val curTimeZone = TimeZone.getTimeZone(tz)
@@ -32,7 +32,7 @@ fun getTimeDDMM(time: Long, nowTime: Long = System.currentTimeMillis()): String 
 
     var desc = ""
     val startTimeOfDay = getStartTimeOfDay(nowTime)
-    val l = time - startTimeOfDay
+    val l = this - startTimeOfDay
     val data = l / 1000 / 24 / 60 / 60
     when (data.toInt()) {
         -1 -> desc = "前天"
@@ -41,9 +41,9 @@ fun getTimeDDMM(time: Long, nowTime: Long = System.currentTimeMillis()): String 
         2 -> desc = "后天"
     }
     if (desc == "今天" || desc == "明天") {
-        desc += time.toTimeString("HH:mm")
+        desc += this.toTimeString("HH:mm")
     } else {
-        desc = time.toTimeString("yyyy年MM月dd日 HH:mm")
+        desc = this.toTimeString("yyyy年MM月dd日 HH:mm")
     }
     return desc
 }

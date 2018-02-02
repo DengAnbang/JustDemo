@@ -3,6 +3,7 @@ package com.dab.just.activity
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,6 +19,8 @@ import com.dab.just.utlis.kt.rxPermissionsWrite
 import java.io.File
 import java.io.IOException
 import java.util.*
+
+
 
 class SelectVideoDialogActivity : BaseDialogActivity() {
     override fun setContentViewRes(): Int = R.layout.activity_select_video_dialog
@@ -101,6 +104,10 @@ class SelectVideoDialogActivity : BaseDialogActivity() {
                     }
                     val uri = data.data
                     val path = getPath(uri)
+                    val mediaPlayer = MediaPlayer()
+                    mediaPlayer.setDataSource(path)
+                    mediaPlayer.prepare()
+                    duration = mediaPlayer.duration.toLong()
                     val intent = Intent()
                     intent.putExtra(PATH, path)
                     intent.putExtra(SIZE, size)

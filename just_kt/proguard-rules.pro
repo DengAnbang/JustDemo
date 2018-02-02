@@ -97,3 +97,11 @@
     **[] $VALUES;
     public *;
 }
+
+#环信
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+
+
+ -keep class com.dab.just.bean.** { *; }
+ -keep class com.dab.just.net.socket.** { *; }

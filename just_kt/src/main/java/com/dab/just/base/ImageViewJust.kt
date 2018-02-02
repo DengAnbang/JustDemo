@@ -20,8 +20,9 @@ open class ImageViewJust : android.support.v7.widget.AppCompatImageView, ImageVi
 
 
     companion object {
-        fun setImage(imageView: ImageView,url: String) {
+        fun setImage(imageView: ImageView,url: String,placeholder:Int=R.mipmap.c1_img1) {
             Glide.with(imageView.context)
+                    .setDefaultRequestOptions(RequestOptions().placeholder(placeholder))
                     .load(url)
                     .into(imageView)
         }

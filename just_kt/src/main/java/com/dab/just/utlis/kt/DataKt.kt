@@ -28,13 +28,17 @@ fun String?.defaultString(default: String)=if (this == null || this == "") defau
 /**
  * 解析string为list
  */
-fun String?.parseStringList():ArrayList<String> {
+fun String?.parseStringList(delimiters:String=","):ArrayList<String> {
     this.isNullOrBlank()
     if (this==null)return arrayListOf()
-    val split = this.split(",")
+    val split = this.replace(" ","").split(delimiters)
     if (split.isEmpty()) return arrayListOf()
     return split as ArrayList<String>
 }
+
+/**
+ * "yyyy年MM月dd日 HH:mm"
+ */
 fun Long?.toTimeString(pattern: String): String {
     if (this==null)return "00:00"
     val f = SimpleDateFormat(pattern, Locale.CHINA)
@@ -48,7 +52,7 @@ fun Int.toTimeString()=if (this <= 0)  "00:00" else String.format("%02d:%02d", t
  * 解析JsonArray
  * 返回一个arraylist
  */
-inline fun <reified T>JsonArray.parse(gson: Gson=Gson())=this.mapTo(ArrayList()) { gson.fromJson<T>(it, T::class.java) }
+inline fun <reified T>JsonArray?.parse(gson: Gson=Gson())= this?.mapTo(ArrayList()) { gson.fromJson<T>(it, T::class.java) } ?: arrayListOf<T>()
 fun JsonObject?.getString(type:String,default:String="")=this?.get(type)?.asString?:default
 fun JsonObject?.getInt(type:String,default:Int=0)=this?.get(type)?.asInt?:default
 
